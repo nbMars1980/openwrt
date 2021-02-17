@@ -12,3 +12,5 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.2/g' package/base-files/files/bin/config_generate
+sed -i "s/DISTRIB_REVISION='R.\{0,99\}\.[0-9]\{1,9\}/& Compiled by Mars/" package/lean/default-settings/files/zzz-default-settings
+#sed -i "s/DISTRIB_DESCRIPTION='OpenWrt/&_Mars/" package/lean/default-settings/files/zzz-default-settings
