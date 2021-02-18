@@ -17,6 +17,10 @@ sed -i  "/DISTRIB_REVISION='R/{s|\(.\+\)'\(.\+\)'\(.\+\)|\1'\2 Compiled by Mars'
 #sed -i "s|DISTRIB_REVISION='R\(.\+\)\.\(\w\+\)|& Compiled by Mars|" package/lean/default-settings/files/zzz-default-settings
 #sed -i "s/DISTRIB_DESCRIPTION='OpenWrt/&_Mars/" package/lean/default-settings/files/zzz-default-settings
 
+#bypass script
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
+
 #edit dhcp config
 sed -i "/exit 0/i\sed -i \"s/option start '100'/option ignore '1'/\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/exit 0/i\sed -i \"/option limit /d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
