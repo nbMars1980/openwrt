@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.0.4/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
 # Edit Compiled name 
 sed -i  "/DISTRIB_REVISION='R/{s|\(.\+\)'\(.\+\)'\(.\+\)|\1'\2 Compiled by Mars'\3|;;}" package/lean/default-settings/files/zzz-default-settings
 #sed -i "s|DISTRIB_REVISION='R\(.\+\)\.\(\w\+\)|& Compiled by Mars|" package/lean/default-settings/files/zzz-default-settings
