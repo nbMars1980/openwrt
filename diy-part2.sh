@@ -21,6 +21,9 @@ sed -i  "/DISTRIB_REVISION='R/{s|\(.\+\)'\(.\+\)'\(.\+\)|\1'\2 Compiled by Mars'
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-vssr/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-vssr/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
+
 #尝试修正libnetwork编译错误
 #find package/*/ feeds/*/ -maxdepth 3 -path "*libnetwork/Makefile"| xargs -i sed -i 's|(GO_PKG)/cmd/proxy|(GO_PKG)/tree/master/cmd/proxy|g' {}
 #find package/*/ feeds/*/ -maxdepth 3 -path "*libnetwork/Makefile"| xargs -i sed -i 's|(GO_PKG)/cmd/dnet|(GO_PKG)/tree/master/cmd/dnet|g' {}
