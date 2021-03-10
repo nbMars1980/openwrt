@@ -23,7 +23,7 @@ git clone https://github.com/garypang13/luci-app-bypass.git package/lean/luci-ap
 git clone https://github.com/jerrykuku/luci-app-ttnode.git package/lean/luci-app-ttnode
 
 #add dockerman
-git clone https://github.com/lisaac/luci-app-dockerman package/lean/luci-app-dockerman
+git clone https://github.com/lisaac/luci-app-dockerman.git package/lean/luci-app-dockerman
 
 #add tencent ddns
-git clone https://github.com/msylgj/luci-app-tencentddns package/lean/luci-app-tencentddns
+git clone https://github.com/Beginner-Go/luci-app-tencentddns.git package/lean/luci-app-tencentddns
