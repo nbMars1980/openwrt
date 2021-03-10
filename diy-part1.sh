@@ -19,7 +19,7 @@ sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 #add bypass
-#git clone https://github.com/garypang13/luci-app-bypass.git package/lean/luci-app-bypass
+git clone https://github.com/garypang13/luci-app-bypass.git package/lean/luci-app-bypass
 git clone https://github.com/jerrykuku/luci-app-ttnode.git package/lean/luci-app-ttnode
 
 #add dockerman
