@@ -44,6 +44,9 @@ sed -i "/腾讯云设置/,+1d" package/lean/luci-app-tencentddns/luasrc/controll
 #Modify aliddns language to zh-cn
 mv feeds/kenzo/luci-app-aliddns/po/zh_Hans feeds/kenzo/luci-app-aliddns/po/zh-cn
 
+#move ttnode menu position to the back
+sed -i "s|_('甜糖星愿自动采集'), 0)\.dependent|_('甜糖星愿自动采集'), 99)\.dependent|g" package/lean/luci-app-ttnode/luasrc/controller/ttnode.lua
+
 #edit dhcp config
 #sed -i "/exit 0/i\sed -i \"s/option start '100'/option ignore '1'/\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 #sed -i "/exit 0/i\sed -i \"/option limit /d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
