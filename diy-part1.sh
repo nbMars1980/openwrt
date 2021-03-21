@@ -11,7 +11,20 @@
 #
 
 # Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+
+#Add bypass
+git clone https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
+
+#Add ttnode
+git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttnode
+
+#Add dockerman
+git clone https://github.com/lisaac/luci-app-dockerman package/lean/luci-app-dockerman
+
+#Add tencentddns
+git clone https://github.com/Beginner-Go/luci-app-tencentddns package/lean/luci-app-tencentddns
