@@ -47,3 +47,12 @@ sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";' feeds/kenzo/luci
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
+
+# Test code
+# Modify network default config
+sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i '/option ula_prefix/d' /etc/config/network" package/lean/default-settings/files/zzz-default-settings
+
+# Modify network default dhcp config
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option start/,+6d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i \"/option start/i\x5c \x5ctoption ignore '1'\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+
