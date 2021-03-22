@@ -53,6 +53,11 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i '/option ula_prefix/d' /etc/config/network" package/lean/default-settings/files/zzz-default-settings
 
 # Modify network default dhcp config
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option start/,+6d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option start/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option limit/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option leasetime/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra /d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option dhcpv6/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra_management/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i \"/option start/i\x5c \x5ctoption ignore '1'\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 
