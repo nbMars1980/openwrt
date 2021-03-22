@@ -3,7 +3,7 @@
 # Description: Modify Config File,delete docker and use uhttpd
 
 Use_Uhttpd=true
-remove_Docker=true
+remove_Docker=false
 
 if $Use_Uhttpd ; then
 # remove nginx and use uhttpd
