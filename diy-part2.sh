@@ -13,7 +13,7 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
 # Set Display Version number
-var displayver=R$(date +'%y.%-m.%-d-%H%M%S')
+displayver=R$(date +'%y.%-m.%-d-%H%M%S')
 sed -i "/DISTRIB_REVISION='R/{s|\(.\+\)'\(.\+\)'\(.\+\)|\1'$displayver Compiled by Mars'\3|;;}" package/lean/default-settings/files/zzz-default-settings
 displayver=
 
