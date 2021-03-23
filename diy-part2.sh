@@ -56,8 +56,7 @@ sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i '/option ula_prefix/d' /etc/config/net
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option start/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option limit/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option leasetime/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra /d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option dhcpv6/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option\x5c(.*'server'\x5c)/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra_management/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i \"/option start/i\x5c \x5ctoption ignore '1'\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 
