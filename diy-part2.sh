@@ -48,18 +48,29 @@ find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
 
-# Test code
+# Modify default close dhcpv6
+sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
+
+# Change nginx and uhttpd default config
+sed -i "s/\(listen_http.*\):80/\1:82/g" package/network/services/uhttpd/files/uhttpd.config
+cp -f files/nginx.config package/network/services/uhttpd/files/
+cp -f files/60_nginx-luci-support feeds/packages/net/nginx/files-luci-support/
+cp -f files/luci.locations feeds/packages/net/nginx/files-luci-support/
+
+# disable softethervpn/vpnbridge softethervpn/vpnserver use 443 port
+sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_bridge.config
+sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_bridge.config
+
+sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_server.config
+sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_server.config
+
 # Modify network default config
 sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i '/option ula_prefix/d' /etc/config/network" package/lean/default-settings/files/zzz-default-settings
 
-# Modify network default dhcp config
+# Modify dhcp default config
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option start/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option limit/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option leasetime/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option\x5c(.*'server'\x5c)/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra_management/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i \"/option start/i\x5c \x5ctoption ignore '1'\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-
-# Modify default close dhcpv6
-sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
-
