@@ -17,6 +17,9 @@ displayver=R$(date +'%y.%-m.%-d-%H%M%S')
 sed -i "/DISTRIB_REVISION='R/{s|\(.\+\)'\(.\+\)'\(.\+\)|\1'$displayver Compiled by Mars'\3|;;}" package/lean/default-settings/files/zzz-default-settings
 displayver=
 
+# remove default root password
+sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-settings
+
 # Modify aliddns language to zh-cn
 mv feeds/kenzo/luci-app-aliddns/po/zh_Hans feeds/kenzo/luci-app-aliddns/po/zh-cn
 
@@ -57,20 +60,6 @@ cp -f files/nginx.config package/network/services/uhttpd/files/
 cp -f files/60_nginx-luci-support feeds/packages/net/nginx/files-luci-support/
 cp -f files/luci.locations feeds/packages/net/nginx/files-luci-support/
 
-# disable softethervpn/vpnbridge softethervpn/vpnserver use 443 port
-sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_bridge.config
-sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_bridge.config
-
-sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_server.config
-sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_server.config
-
-# Modify network default config
-sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i '/option ula_prefix/d' /etc/config/network" package/lean/default-settings/files/zzz-default-settings
-
-# Modify dhcp default config
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option start/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option limit/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option leasetime/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option\x5c(.*'server'\x5c)/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra_management/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
-sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i \"/option start/i\x5c \x5ctoption ignore '1'\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
+# Add ext default config
+sed -i '/exit\(.*0\)/d' package/lean/default-settings/files/zzz-default-settings
+cat files/ext-default-settings >> package/lean/default-settings/files/zzz-default-settings
