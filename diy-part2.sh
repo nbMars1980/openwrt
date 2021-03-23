@@ -60,3 +60,6 @@ sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option\x5c(.*'server'\x5c)/d\" /etc/co
 sed -i "/DISTRIB_DESCRIPTION=/a\sed -i \"/option ra_management/d\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 sed -i "/DISTRIB_DESCRIPTION=/a\\\nsed -i \"/option start/i\x5c \x5ctoption ignore '1'\" /etc/config/dhcp" package/lean/default-settings/files/zzz-default-settings
 
+# Modify default close dhcpv6
+sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
+
