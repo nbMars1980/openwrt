@@ -12,7 +12,7 @@ location /ubus {
 }
 
 location / {
-	proxy_pass http://127.0.0.1:82;
+        proxy_pass http://127.0.0.1:82;
 }
 EOT
 	fi
