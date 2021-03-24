@@ -1,3 +1,6 @@
+location / {
+	proxy_pass http://127.0.0.1:82;
+}
 #location /cgi-bin/luci {
 #		index  index.html;
 #		include uwsgi_params;

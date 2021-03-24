@@ -2,6 +2,7 @@
 
 if nginx -V 2>&1 | grep -q ubus; then
 	if [ -z "$(cat /etc/nginx/conf.d/luci.locations | grep ubus)" ]; then
+                sed -i '/location \/ {/,+2d' /etc/nginx/conf.d/luci.locations
 		cat <<EOT >> /etc/nginx/conf.d/luci.locations
 
 location /ubus {
