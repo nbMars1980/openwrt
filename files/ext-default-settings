@@ -16,8 +16,8 @@ sed -i "/option\(.*'server'\)/d" /etc/config/dhcp
 sed -i "/option ra_management/d" /etc/config/dhcp
 
 # disable softethervpn/vpnbridge softethervpn/vpnserver use 443 port
-/usr/libexec/softethervpn/vpnbridge stop
-/usr/libexec/softethervpn/vpnserver stop
+service softethervpnbridge stop
+service softethervpnserver stop
 
 sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_bridge.config
 sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_bridge.config
@@ -25,7 +25,7 @@ sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vp
 sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_server.config
 sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_server.config
 
-/usr/libexec/softethervpn/vpnbridge start
-/usr/libexec/softethervpn/vpnserver start
+service softethervpnbridge start
+service softethervpnserver start
 
 exit 0
