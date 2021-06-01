@@ -20,7 +20,7 @@ sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 #Add bypass
-#git clone https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
+git clone https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
 
 #Add ttnode
 git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttnode
