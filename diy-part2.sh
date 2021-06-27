@@ -21,7 +21,7 @@ displayver=
 sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-settings
 
 # Modify aliddns language to zh-cn
-mv feeds/kenzo/luci-app-aliddns/po/zh_Hans feeds/kenzo/luci-app-aliddns/po/zh-cn
+# mv feeds/kenzo/luci-app-aliddns/po/zh_Hans feeds/kenzo/luci-app-aliddns/po/zh-cn
 
 # Modify tencentddns menu index
 sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
@@ -56,6 +56,7 @@ sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/o
 
 # Change nginx and uhttpd default config
 sed -i "s/\(listen_http.*\):80/\1:82/g" package/network/services/uhttpd/files/uhttpd.config
+sed -i "s/128M/512M/g" feeds/packages/net/nginx-util/files/uci.conf.template
 cp -f files/nginx.config feeds/packages/net/nginx-util/files/
 cp -f files/60_nginx-luci-support feeds/packages/net/nginx/files-luci-support/
 cp -f files/luci.locations feeds/packages/net/nginx/files-luci-support/
