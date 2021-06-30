@@ -24,6 +24,7 @@ sed -i "/^CONFIG_NGINX_\(.*=y\)/ s/^/# /g" .config
 # Use uhttpd
 sed -i 's/^#\(.*CONFIG_PACKAGE_luci-app-uhttpd is not set\)/CONFIG_PACKAGE_luci-app-uhttpd=y/g' .config
 sed -i "s/\(listen_http.*\):82/\1:80/g" package/network/services/uhttpd/files/uhttpd.config
+sed -i "/list listen_https/ s/^/# /g" package/network/services/uhttpd/files/uhttpd.config
 
 fi
 
