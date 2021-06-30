@@ -56,6 +56,7 @@ sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/o
 
 # Change nginx and uhttpd default config
 sed -i "s/\(listen_http.*\):80/\1:82/g" package/network/services/uhttpd/files/uhttpd.config
+sed -i "s/^#\(.*list listen_https\)/\1/" package/network/services/uhttpd/files/uhttpd.config
 sed -i "s/128M/512M/g" feeds/packages/net/nginx-util/files/uci.conf.template
 cp -f files/nginx.config feeds/packages/net/nginx-util/files/
 cp -f files/60_nginx-luci-support feeds/packages/net/nginx/files-luci-support/
