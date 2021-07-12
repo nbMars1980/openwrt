@@ -46,10 +46,12 @@ sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!
 sed -i '/a\[data-title="Docker"\]:before/{p;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
 sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
 
-# Fix bypass relys
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
-find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
+# Fix bypass not run also stop end disable smartdns
+sed  -i 's|\"$(uci get smartdns.@smartdns\[0\].enabled 2>\/dev\/null)\" == \"1\"|\"$(uci get smartdns.@smartdns\[0\].enabled 2>\/dev\/null)\" == \"1\" \]\] \&\& \[\[ \"$(uci get bypass.@global\[0\].global_server 2>\/dev\/null)\" != \"\"|g' package/lean/luci-app-bypass/luci-app-bypass/root/etc/init.d/bypass
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
+#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
+
 
 # Modify default close dhcpv6
 sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
