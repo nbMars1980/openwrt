@@ -11,8 +11,9 @@
 #
 
 #remove coolsnowwolf smartdns,Use kenzok8 smartdns
-rm -rf feeds/packages/net/smartdns package/feeds/packages/smartdns
-./scripts/feeds install -a -p kenzo
+./scripts/feeds uninstall smartdns 
+./scripts/feeds install -fp kenzo smartdns luci-app-jd-dailybonus
+./scripts/feeds install -fp small trojan
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
