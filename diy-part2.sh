@@ -11,8 +11,8 @@
 #
 
 #remove coolsnowwolf smartdns,Use kenzok8 smartdns
-rm -rf feeds/packages/net/smartdns 
-./scripts/feeds install -a
+rm -rf feeds/packages/net/smartdns package/feeds/packages/smartdns
+./scripts/feeds install -a -p kenzo
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
