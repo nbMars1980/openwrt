@@ -10,6 +10,10 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+#remove coolsnowwolf smartdns,Use kenzok8 smartdns
+rm -rf feeds/packages/net/smartdns 
+./scripts/feeds install -a
+
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
 # Set Display Version number
