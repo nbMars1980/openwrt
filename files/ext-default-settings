@@ -2,7 +2,7 @@
 sed -i 's/root::0:0:99999:7:::/root:$1$82ul89PC$i6T4CwyLabeZiJUcMMzMU1:18678:0:99999:7:::/g' /etc/shadow
 
 # Add default ssh public key
-if [ `grep -c "2OFZB2qET+NWgyDW5KDEMH7Ztpdgc3EOlMBvVj2GipdpMfQAMUNMc=" /etc/dropbear/authorized_keys` -eq 0 ];then
+if [ ! -s /etc/dropbear/authorized_keys ]||[ `grep -c "2OFZB2qET+NWgyDW5KDEMH7Ztpdgc3EOlMBvVj2GipdpMfQAMUNMc=" /etc/dropbear/authorized_keys` -eq 0 ];then
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEApr6s9cjmQ5QZFXWKHSUpTXg+zrRIGj3tFT3hw7faxGeou70A16CEKeBq5dL+fOcfuzyKprx/poKuAkMt5lUihPBw4rmW8VPOIaUfKitNdMZk7L14TgRp4Vx4/ZgtUU0p4i/gJNl7lLATvdlvFSEFLIubcaQn2zcFOf7ACxcD0ro2K18ve6hHJ5RO3jyeDV1Ta+6Iz/Nhvl64t1PX4779sXuHJJgUKYbED0GsgZyZI5l7+f0Wr7OT6XAoWFqHF0jNQb27l/UAH6elGe0mtAYLWP3ColTHvEULh1mlECTptlpsmLcO2iKYEBgYh90oBQae5tuKWfTZGr2inwylF6hV4xYAK4s0uDgqqvT6d3hy1qWWKfNkdMzYsDik6tMd31QT7DGm1Nv28nTJIJXjemp/i65BR0HDqJZhY9E3Wkzz5FFurGNyKG9BwIAo2tqo31N3WD3RIUxHzVpcFNjQ/UFIVGuLAFGXRaYq31kZJBcH9Q63CgSijYXk4GOoeKE8c3dlfS5/6Cbse5mBoLrK9NFgTrWP0wA/JfamTCNGUwW+oBkDog7gPSJU2kqW5dQEYu1Cg7u3ZyQ8bb2nP9WsTXzj/dZIpCVE97nvs9kSmvxA+4nTqquAN1otob2OFZB2qET+NWgyDW5KDEMH7Ztpdgc3EOlMBvVj2GipdpMfQAMUNMc= rsa 4096-110919" >> /etc/dropbear/authorized_keys
 fi
 
