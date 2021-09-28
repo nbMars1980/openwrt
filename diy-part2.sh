@@ -44,12 +44,12 @@ sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-open
 sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-opentomato/htdocs/luci-static/opentomato/cascade.css 
 
 # Edit theme-atmaterial_Brown css
-sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
-sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
+#sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
+#sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
 
-# Edit theme-atmaterial_Brown css
-sed -i '/a\[data-title="Docker"\]:before/{p;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
-sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
+# Edit theme-atmaterial_red css
+#sed -i '/a\[data-title="Docker"\]:before/{p;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
+#sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
 
 # Fix bypass not run also stop end disable smartdns
 sed  -i 's|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\"|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\" \]\] \&\& \[\[ \"$(uci -q get bypass.@global\[0\].global_server)\" != \"\"|g' package/lean/luci-app-bypass/luci-app-bypass/root/etc/init.d/bypass
