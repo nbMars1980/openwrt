@@ -30,6 +30,7 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 
 #change  GOPROXY Set
 sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/*/Makefile
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' package/lean/UnblockNeteaseMusic-Go/Makefile
 
 # Modify tencentddns menu index
 sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
