@@ -45,14 +45,7 @@ jobs:
     - name: echo goproxy.io certificate
       run: |
         nslookup goproxy.io
-        cat /etc/hosts
         echo | openssl s_client -servername goproxy.io -connect goproxy.io:443 2>/dev/null | openssl x509 -text
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         
     - name: Initialization environment
       env:
