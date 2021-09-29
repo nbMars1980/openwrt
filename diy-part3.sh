@@ -22,7 +22,11 @@ sed -i "/^CONFIG_PACKAGE_nginx-ssl-util=y/ s/^/# /g" .config
 sed -i "/^CONFIG_NGINX_\(.*=y\)/ s/^/# /g" .config
 
 # Use uhttpd
-sed -i 's/^#\(.*CONFIG_PACKAGE_luci-app-uhttpd is not set\)/CONFIG_PACKAGE_luci-app-uhttpd=y/g' .config
+if [ ! -z `sed -n '/^#\(.*CONFIG_PACKAGE_luci-app-uhttpd is not set\)/=' .config` ];then
+    sed -i 's/^#\(.*CONFIG_PACKAGE_luci-app-uhttpd is not set\)/CONFIG_PACKAGE_luci-app-uhttpd=y/g' .config
+else
+    sed -i '$a CONFIG_PACKAGE_luci-app-uhttpd=y' .config
+fi
 sed -i "s/\(listen_http.*\):82/\1:80/g" package/network/services/uhttpd/files/uhttpd.config
 sed -i "s/^#\(.*list listen_https\)/\1/" package/network/services/uhttpd/files/uhttpd.config
 
