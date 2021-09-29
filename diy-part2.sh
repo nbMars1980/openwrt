@@ -28,6 +28,14 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 # Modify aliddns language to zh-cn
 # mv feeds/kenzo/luci-app-aliddns/po/zh_Hans feeds/kenzo/luci-app-aliddns/po/zh-cn
 
+#change  GOPROXY Set
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/v2ray-plugin/Makefile
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/trojan-go/Makefile
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/xray-plugin/Makefile
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/hysteria/Makefile
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/xray-core/Makefile
+sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' feeds/small/v2ray-core/Makefile
+
 # Modify tencentddns menu index
 sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
 sed -i "/腾讯云设置/,+1d" package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
