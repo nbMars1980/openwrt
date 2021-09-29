@@ -41,6 +41,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
+      
+    - name: echo goproxy.io certificate
+      run: |
+        nslookup goproxy.io
+        echo | openssl s_client -servername goproxy.io -connect goproxy.io:443 2>/dev/null | openssl x509 -text
 
     - name: Initialization environment
       env:
@@ -61,10 +66,7 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
-    - name: echo goproxy.io certificate
-      run: |
-        echo | openssl s_client -servername goproxy.io -connect goproxy.io:443 2>/dev/null | openssl x509 -text
+    
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
