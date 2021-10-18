@@ -9,6 +9,9 @@ fi
 # Modify network default config
 sed -i '/option ula_prefix/d' /etc/config/network
 
+# fix ttnode
+sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /usr/lib/lua/luci/view/ttnode/login_form.htm |grep "/ttnode/"
+
 # Modify dhcp default config
 sed -i "/option start/i\ \toption ignore '1'" /etc/config/dhcp
 sed -i "/option start/d" /etc/config/dhcp
