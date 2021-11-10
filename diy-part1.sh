@@ -30,4 +30,4 @@ git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttn
 git clone https://github.com/lisaac/luci-app-dockerman package/lean/luci-app-dockerman
 
 #Add tencentddns
-git clone https://github.com/Beginner-Go/luci-app-tencentddns package/lean/luci-app-tencentddns
+git clone https://github.com/pbx168/luci-app-tencentddns package/lean/luci-app-tencentddns
