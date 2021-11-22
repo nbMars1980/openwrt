@@ -16,12 +16,23 @@ sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /u
 sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /etc/shinit
 
 # Modify dhcp default config
-sed -i "/option start/i\ \toption ignore '1'" /etc/config/dhcp
-sed -i "/option start/d" /etc/config/dhcp
-sed -i "/option limit/d" /etc/config/dhcp
-sed -i "/option leasetime/d" /etc/config/dhcp
-sed -i "/option\(.*'server'\)/d" /etc/config/dhcp
-sed -i "/option ra_management/d" /etc/config/dhcp
+if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ]
+  uci add_list dhcp.lan.ignore=1
+  uci delete dhcp.lan.start
+  uci delete dhcp.lan.limit
+  uci delete dhcp.lan.leasetime   
+  uci delete dhcp.lan.ra_management
+  uci delete dhcp.lan.ra
+  uci delete dhcp.lan.dhcpv4
+  uci delete dhcp.lan.dhcpv6
+  uci commit dhcp
+fi
+#sed -i "/option start/i\ \toption ignore '1'" /etc/config/dhcp
+#sed -i "/option start/d" /etc/config/dhcp
+#sed -i "/option limit/d" /etc/config/dhcp
+#sed -i "/option leasetime/d" /etc/config/dhcp
+#sed -i "/option\(.*'server'\)/d" /etc/config/dhcp
+#sed -i "/option ra_management/d" /etc/config/dhcp
 
 # disable softethervpn/vpnbridge softethervpn/vpnserver use 443 port
 #if [ "$(cat /usr/libexec/softethervpn/vpn_bridge.config)" = "" ] && [ -z "$(pgrep vpnbridge)" ]; then
