@@ -23,7 +23,7 @@ if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ]
   uci delete dhcp.lan.leasetime   
   uci delete dhcp.lan.ra_management
   uci delete dhcp.lan.ra
-  uci delete dhcp.lan.dhcpv4
+  # uci delete dhcp.lan.dhcpv4
   uci delete dhcp.lan.dhcpv6
   uci commit dhcp
 fi
