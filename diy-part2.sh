@@ -40,12 +40,12 @@ sed -i "/腾讯云设置/,+1d" package/lean/luci-app-tencentddns/luasrc/controll
 sed -i "s|_('甜糖星愿自动采集'), 0)\.dependent|_('甜糖星愿自动采集'), 100)\.dependent|g" package/lean/luci-app-ttnode/luasrc/controller/ttnode.lua
 
 # Edit theme-opentomcat css
-sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-opentomcat/files/htdocs/css/style.css
-sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-opentomcat/files/htdocs/css/style.css
+#sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-opentomcat/files/htdocs/css/style.css
+#sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-opentomcat/files/htdocs/css/style.css
 
 # Edit theme-opentomato css
-sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-opentomato/htdocs/luci-static/opentomato/cascade.css 
-sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-opentomato/htdocs/luci-static/opentomato/cascade.css 
+#sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-opentomato/htdocs/luci-static/opentomato/cascade.css 
+#sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-opentomato/htdocs/luci-static/opentomato/cascade.css 
 
 # Edit theme-atmaterial_Brown css
 #sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
