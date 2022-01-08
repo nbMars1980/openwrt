@@ -12,6 +12,10 @@ sed -i '/option ula_prefix/d' /etc/config/network
 # fix ttnode
 sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /usr/lib/lua/luci/view/ttnode/login_form.htm
 
+# Send server notifications using local services
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/jd-dailybonus/newapp.sh
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/ttnode/ttnode.lua
+
 #add -h to ll command
 sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /etc/shinit
 
