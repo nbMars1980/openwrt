@@ -16,6 +16,10 @@ sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /u
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/jd-dailybonus/newapp.sh
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/ttnode/ttnode.lua
 
+# fix Netlink receive failure: Out of memory error
+sed -i '$a net.core.wmem_max=16777216'  /etc/sysctl.conf
+sed -i '$a net.core.rmem_max=16777216'  /etc/sysctl.conf
+sysctl -p
 #add -h to ll command
 sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /etc/shinit
 
