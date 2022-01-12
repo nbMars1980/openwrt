@@ -13,8 +13,15 @@ sed -i '/option ula_prefix/d' /etc/config/network
 sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /usr/lib/lua/luci/view/ttnode/login_form.htm
 
 # Send server notifications using local services
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/jd-dailybonus/newapp.sh
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/ttnode/ttnode.lua
+#sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/jd-dailybonus/newapp.sh
+#sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/ttnode/ttnode.lua
+
+#add my service
+if [ -f /etc/luci-uploads/MarsNotify.service -a -f /etc/luci-uploads/MarsNotify.js ];then
+  cp /etc/luci-uploads/MarsNotify.service /etc/init.d/MarsNotify
+  service MarsNotify enable
+  server MarsNotify start
+fi
 
 # fix Netlink receive failure: Out of memory error
 sed -i '$a net.core.wmem_max=16777216'  /etc/sysctl.conf
