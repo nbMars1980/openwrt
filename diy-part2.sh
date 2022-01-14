@@ -60,7 +60,7 @@ sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!
 #sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
 
 # Fix bypass not run also stop end disable smartdns
-sed  -i 's|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\"|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\" \]\] \&\& \[\[ \"$(uci -q get bypass.@global\[0\].global_server)\" != \"\"|g' package/lean/luci-app-bypass/luci-app-bypass/root/etc/init.d/bypass
+#sed  -i 's|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\"|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\" \]\] \&\& \[\[ \"$(uci -q get bypass.@global\[0\].global_server)\" != \"\"|g' package/lean/luci-app-bypass/luci-app-bypass/root/etc/init.d/bypass
 #find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
 #find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
 #find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
