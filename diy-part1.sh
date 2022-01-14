@@ -24,10 +24,10 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #git clone https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
 
 #Add ttnode
-#git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttnode
+git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttnode
 
 #Add dockerman
 #git clone https://github.com/lisaac/luci-app-dockerman package/lean/luci-app-dockerman
 
 #Add tencentddns
-#git clone https://github.com/pbx168/luci-app-tencentddns package/lean/luci-app-tencentddns
+git clone https://github.com/pbx168/luci-app-tencentddns package/lean/luci-app-tencentddns
