@@ -19,8 +19,7 @@ sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /u
 #add my service
 if [ -f /etc/luci-uploads/MarsNotify.service -a -f /etc/luci-uploads/MarsNotify.js ];then
   cp -rf /etc/luci-uploads/MarsNotify.service /etc/init.d/MarsNotify
-  sleep 1s
-  service MarsNotify enable
+  cd /etc/rc.d && ln -s ../init.d/MarsNotify S99MarsNotify
   service MarsNotify start
 fi
 
