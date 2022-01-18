@@ -12,7 +12,7 @@ sed -i '/option ula_prefix/d' /etc/config/network
 # fix ttnode
 sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /usr/lib/lua/luci/view/ttnode/login_form.htm
 sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' /usr/lib/lua/luci/view/ttnode/login_form.htm
-sed -i '/jq.cookie(.ltime., 0)/{n;/countdown = 60/d}' /usr/lib/lua/luci/view/ttnode/login_form.htm
+sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' /usr/lib/lua/luci/view/ttnode/login_form.htm
 
 # Send server notifications using local services
 #sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/jd-dailybonus/newapp.sh
