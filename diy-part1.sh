@@ -19,6 +19,7 @@
 #sed -i '$a src-git kenzo https://github.com/Mars-Grace/openwrt-packages' feeds.conf.default
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 
 #Add bypass
 #git clone https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
