@@ -11,10 +11,11 @@
 #
 
 #remove coolsnowwolf smartdns,Use kenzok8 smartdns
-./scripts/feeds uninstall smartdns 
+#./scripts/feeds uninstall smartdns 
 ./scripts/feeds install -fp kenzo smartdns luci-app-jd-dailybonus
 ./scripts/feeds install -fp small trojan simple-obfs dnsproxy
-./scripts/feeds install -fp xiaorouji 
+./scripts/feeds install -fp xiaorouji luci-app-passwall
+./scripts/feeds install -afp xiaorouji 
 #dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
 
 # Modify default IP
