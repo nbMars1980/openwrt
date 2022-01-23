@@ -14,6 +14,8 @@
 ./scripts/feeds uninstall smartdns 
 ./scripts/feeds install -fp kenzo smartdns luci-app-jd-dailybonus
 ./scripts/feeds install -fp small trojan simple-obfs dnsproxy
+./scripts/feeds install -fp xiaorouji 
+#dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
