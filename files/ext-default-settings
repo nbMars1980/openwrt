@@ -21,8 +21,9 @@ sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' /usr/lib/lua/luci/v
 #add my service
 if [ -f /etc/luci-uploads/MarsNotify.service -a -f /etc/luci-uploads/MarsNotify.js ];then
   cp -rf /etc/luci-uploads/MarsNotify.service /etc/init.d/MarsNotify
+  chmod +x /etc/init.d/MarsNotify
   cd /etc/rc.d && ln -s ../init.d/MarsNotify S99MarsNotify
-  service MarsNotify start
+  /etc/init.d/MarsNotify start
 fi
 
 # fix Netlink receive failure: Out of memory error
