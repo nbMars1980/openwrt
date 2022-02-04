@@ -20,7 +20,8 @@ sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' /usr/lib/lua/luci/v
 
 #add my service
 if [ -f /etc/luci-uploads/MarsNotify.service -a -f /etc/luci-uploads/MarsNotify.js ];then
-  cp -rf /etc/luci-uploads/MarsNotify.service /etc/init.d/MarsNotify
+  # cp -rf /etc/luci-uploads/MarsNotify.service /etc/init.d/MarsNotify
+  cd /etc/init.d && ln -s /etc/luci-uploads/MarsNotify.service MarsNotify
   chmod +x /etc/init.d/MarsNotify
   cd /etc/rc.d && ln -s ../init.d/MarsNotify S99MarsNotify
   /etc/init.d/MarsNotify start
