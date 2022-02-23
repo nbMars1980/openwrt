@@ -39,7 +39,7 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 
 # modify ttnode and jd-dailybonus notify server url
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean//luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
 
 # Modify tencentddns menu index
 sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
