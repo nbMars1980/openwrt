@@ -32,3 +32,6 @@ git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttn
 
 #Add tencentddns
 git clone https://github.com/pbx168/luci-app-tencentddns package/lean/luci-app-tencentddns
+
+#Add  jd-dailybonus
+git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/lean/luci-app-jd-dailybonus
