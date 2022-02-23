@@ -11,14 +11,14 @@
 #
 
 #remove coolsnowwolf smartdns,Use kenzok8 smartdns
-cp .config .config.bak
-./scripts/feeds uninstall smartdns 
-./scripts/feeds install -fp kenzo smartdns luci-app-jd-dailybonus
+#cp .config .config.bak
+#./scripts/feeds uninstall smartdns 
+./scripts/feeds install -fp kenzo smartdns 
 #./scripts/feeds install -fp small trojan simple-obfs dnsproxy
 ./scripts/feeds uninstall luci-app-passwall
 ./scripts/feeds install -afp xiaorouji 
 #dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
-mv -f .config.bak .config
+#mv -f .config.bak .config
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
