@@ -15,8 +15,8 @@ cp .config .config.bak
 #./scripts/feeds uninstall smartdns 
 ./scripts/feeds install -fp kenzo smartdns 
 #./scripts/feeds install -fp small trojan simple-obfs dnsproxy
-./scripts/feeds uninstall luci-app-passwall
-./scripts/feeds install -afp xiaorouji 
+# --下次可能需要恢复-- ./scripts/feeds uninstall luci-app-passwall
+# --下次可能需要恢复-- ./scripts/feeds install -afp xiaorouji   
 #dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
 mv -f .config.bak .config
 
