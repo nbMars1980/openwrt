@@ -11,14 +11,14 @@
 #
 
 #remove coolsnowwolf smartdns,Use kenzok8 smartdns
-cp .config .config.bak
+#cp .config .config.bak
 #./scripts/feeds uninstall smartdns 
 ./scripts/feeds install -fp kenzo smartdns 
 #./scripts/feeds install -fp small trojan simple-obfs dnsproxy
 # --下次可能需要恢复-- ./scripts/feeds uninstall luci-app-passwall
 # --下次可能需要恢复-- ./scripts/feeds install -afp xiaorouji   
 #dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
-mv -f .config.bak .config
+#mv -f .config.bak .config
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
@@ -38,15 +38,21 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 #sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' package/lean/UnblockNeteaseMusic-Go/Makefile
 
 # modify ttnode and jd-dailybonus notify server url
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean//luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua 
+#package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh  
+#package/lean//luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
 
 # Modify tencentddns menu index
-sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
-sed -i "/腾讯云设置/,+1d" package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
+sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
+sed -i "/腾讯云设置/,+1d" feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
 
 # Modify ttnode menu index
-sed -i "s|_('甜糖星愿自动采集'), 0)\.dependent|_('甜糖星愿自动采集'), 100)\.dependent|g" package/lean/luci-app-ttnode/luasrc/controller/ttnode.lua
+sed -i "s|_('甜糖星愿自动采集'), 0)\.dependent|_('甜糖星愿自动采集'), 100)\.dependent|g" feeds/kenzo/luci-app-ttnode/luasrc/controller/ttnode.lua
+# fix ttnode
+sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
+sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
+sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
 
 # Edit theme-mcat css
 sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-mcat/files/htdocs/css/style.css

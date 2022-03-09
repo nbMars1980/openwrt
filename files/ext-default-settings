@@ -10,13 +10,9 @@ fi
 sed -i '/option ula_prefix/d' /etc/config/network
 
 # fix ttnode
-sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /usr/lib/lua/luci/view/ttnode/login_form.htm
-sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' /usr/lib/lua/luci/view/ttnode/login_form.htm
-sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' /usr/lib/lua/luci/view/ttnode/login_form.htm
-
-# Send server notifications using local services
-#sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/jd-dailybonus/newapp.sh
-#sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" /usr/share/ttnode/ttnode.lua
+#sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' /usr/lib/lua/luci/view/ttnode/login_form.htm
+#sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' /usr/lib/lua/luci/view/ttnode/login_form.htm
+#sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' /usr/lib/lua/luci/view/ttnode/login_form.htm
 
 #add my service
 if [ -f /etc/luci-uploads/MarsNotify.service -a -f /etc/luci-uploads/MarsNotify.js ];then
@@ -50,45 +46,5 @@ if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ]
   uci delete dhcp.lan.dhcpv6
   uci commit dhcp
 fi
-#sed -i "/option start/i\ \toption ignore '1'" /etc/config/dhcp
-#sed -i "/option start/d" /etc/config/dhcp
-#sed -i "/option limit/d" /etc/config/dhcp
-#sed -i "/option leasetime/d" /etc/config/dhcp
-#sed -i "/option\(.*'server'\)/d" /etc/config/dhcp
-#sed -i "/option ra_management/d" /etc/config/dhcp
-
-# disable softethervpn/vpnbridge softethervpn/vpnserver use 443 port
-#if [ "$(cat /usr/libexec/softethervpn/vpn_bridge.config)" = "" ] && [ -z "$(pgrep vpnbridge)" ]; then
-#    service softethervpnbridge start
-#    sleep 5s
-#fi
-#if [ -n "$(pgrep /usr/libexec/softethervpn/vpnbridge)" ]; then
-#    /usr/libexec/softethervpn/vpnbridge stop
-#    sleep 5s
-#fi
-#if [ -n "$(pgrep vpnbridge)" ]; then
-#    service softethervpnbridge stop   
-#    sleep 5s
-#fi
-#sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_bridge.config
-#sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_bridge.config
-
-#if [ "$(cat /usr/libexec/softethervpn/vpn_server.config)" = "" ] && [ -z "$(pgrep vpnserver)" ]; then
-#    service softethervpnserver start
-#    sleep 1s
-#fi
-#if [ -n "$(pgrep /usr/libexec/softethervpn/vpnserver)" ]; then
-#    /usr/libexec/softethervpn/vpnserver stop
-#    sleep 1s
-#fi
-#if [ -n "$(pgrep vpnserver)" ]; then
-#    service softethervpnserver stop
-#    sleep 1s   
-#fi
-#sed -i '$!N;/\n.*uint Port 443/!P;D' /usr/libexec/softethervpn/vpn_server.config
-#sed -i '/uint Port 443/i\ \t\t\tbool Enabled false' /usr/libexec/softethervpn/vpn_server.config
-
-# service softethervpnbridge start
-# service softethervpnserver start
 
 exit 0
