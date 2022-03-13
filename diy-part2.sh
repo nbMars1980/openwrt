@@ -43,6 +43,9 @@ sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-a
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh  
 #package/lean//luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
 
+#rename PassWall 2 as PassWall_2
+sed -i "/alias(\"admin\"/{s/_(\".*\")/_(\"PassWall_2\")/g}" feeds/kenzo/luci-app-passwall2/luasrc/controller/passwall2.lua
+
 # Modify tencentddns menu index
 sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
 sed -i "/腾讯云设置/,+1d" feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
