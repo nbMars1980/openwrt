@@ -43,9 +43,6 @@ sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-a
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh  
 #package/lean//luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
 
-#rename PassWall 2 as PassWall_2
-sed -i "/alias(\"admin\"/{s/_(\".*\")/_(\"PassWall_2\")/g}" feeds/kenzo/luci-app-passwall2/luasrc/controller/passwall2.lua
-
 # Modify tencentddns menu index
 sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
 sed -i "/腾讯云设置/,+1d" feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
@@ -57,13 +54,15 @@ sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' fe
 sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
 sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
 
-# Edit theme-mcat css
+# Edit theme-mcat css and js
 sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-mcat/files/htdocs/css/style.css
 sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-mcat/files/htdocs/css/style.css
+sed -i "s/if (href.indexOf(nodeUrl) != -1) {/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl) {/g" feeds/kenzo/luci-theme-mcat/files/htdocs/js/script.js
 
 # Edit theme-tomato css
 sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/cascade.css 
 sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/cascade.css 
+sed -i "s/if (href.indexOf(nodeUrl) != -1) {/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl) {/g" feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
 
 # Edit theme-atmaterial_Brown css
 #sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
