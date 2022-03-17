@@ -47,10 +47,4 @@ if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ];then
   uci commit dhcp
 fi
 
-# Replace mosdns's config file def_config.yaml to cus_config.yaml
-/etc/init.d/mosdns stop 
-mv /etc/mosdns/def_config.yaml /etc/mosdns/def_config.yaml.bak 
-ln -s /etc/mosdns/cus_config.yaml /etc/mosdns/def_config.yaml 
-/etc/init.d/mosdns start
-
 exit 0
