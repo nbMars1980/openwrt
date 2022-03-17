@@ -35,7 +35,7 @@ fi
 sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /etc/shinit
 
 # Modify dhcp default config
-if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ]
+if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ];then
   uci add_list dhcp.lan.ignore=1
   uci delete dhcp.lan.start
   uci delete dhcp.lan.limit
@@ -46,5 +46,11 @@ if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ]
   uci delete dhcp.lan.dhcpv6
   uci commit dhcp
 fi
+
+# Replace mosdns's config file def_config.yaml to cus_config.yaml
+/etc/init.d/mosdns stop 
+mv /etc/mosdns/def_config.yaml /etc/mosdns/def_config.yaml.bak 
+ln -s /etc/mosdns/cus_config.yaml /etc/mosdns/def_config.yaml 
+/etc/init.d/mosdns start
 
 exit 0
