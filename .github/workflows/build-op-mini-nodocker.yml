@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build Op-mini nodocker nonginx
+name: Build Op nodocker nonginx
 
 on:
   repository_dispatch:
