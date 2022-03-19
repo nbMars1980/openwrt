@@ -38,21 +38,21 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 #sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' package/lean/UnblockNeteaseMusic-Go/Makefile
 
 # modify ttnode and jd-dailybonus notify server url
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua 
-#package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
-sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" feeds/kenzo/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh  
-#package/lean//luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
+# feeds/kenzo/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua 
+sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh
+# feeds/kenzo/luci-app-jd-dailybonus/root/usr/share/jd-dailybonus/newapp.sh  
 
 # Modify tencentddns menu index
-sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
-sed -i "/腾讯云设置/,+1d" feeds/kenzo/luci-app-tencentddns/files/luci/controller/tencentddns.lua
+sed -i '/腾讯云设置/i\entry({"admin", "services", "tencentddns"},cbi("tencentddns"),_("TencentDDNS"),59)' package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
+sed -i "/腾讯云设置/,+1d" package/lean/luci-app-tencentddns/luasrc/controller/tencentddns.lua
 
 # Modify ttnode menu index
-sed -i "s|_('甜糖星愿自动采集'), 0)\.dependent|_('甜糖星愿自动采集'), 100)\.dependent|g" feeds/kenzo/luci-app-ttnode/luasrc/controller/ttnode.lua
+sed -i "s|_('甜糖星愿自动采集'), 0)\.dependent|_('甜糖星愿自动采集'), 100)\.dependent|g" package/lean/luci-app-ttnode/luasrc/controller/ttnode.lua
 # fix ttnode
-sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
-sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
-sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' feeds/kenzo/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
+sed -i 's|src="/ttnode/jquery.min.js|src="/luci-static/ttnode/jquery.min.js|' package/lean/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
+sed -i '/if.*(d.error == 0)/{n;s/settime()/countdown = 60\;\n\t\t\t\t\t&/g}' package/lean/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
+sed -i '/jq.cookie(.ltime., 0)/{n;s/countdown = 60/\/\/&/g}' package/lean/luci-app-ttnode/luasrc/view/ttnode/login_form.htm
 
 # Edit theme-mcat css and js
 sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-mcat/files/htdocs/css/style.css
@@ -63,21 +63,6 @@ sed -i "s/if (href.indexOf(nodeUrl) != -1) {/if (href.substr(href.length-nodeUrl
 sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/cascade.css 
 sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/cascade.css 
 sed -i "s/if (href.indexOf(nodeUrl) != -1) {/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl) {/g" feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
-
-# Edit theme-atmaterial_Brown css
-#sed -i '/a\[data-title="Docker"\]:before/{p;N;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
-#sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";\n color: #66CC00!important;' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_Brown/css/style.css
-
-# Edit theme-atmaterial_red css
-#sed -i '/a\[data-title="Docker"\]:before/{p;N;d}'  feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
-#sed -i '/a\[data-title="Docker"\]:before/a\ content: "\\e025";' feeds/kenzo/luci-theme-atmaterial/htdocs/luci-static/atmaterial_red/css/style.css
-
-# Fix bypass not run also stop end disable smartdns
-#sed  -i 's|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\"|\"$(uci -q get smartdns.@smartdns\[0\].enabled)\" == \"1\" \]\] \&\& \[\[ \"$(uci -q get bypass.@global\[0\].global_server)\" != \"\"|g' package/lean/luci-app-bypass/luci-app-bypass/root/etc/init.d/bypass
-#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-redir/shadowsocksr-libev-alt/g' {}
-#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/shadowsocksr-libev-ssr-server/shadowsocksr-libev-server/g' {}
-#find package/*/ feeds/*/ -maxdepth 2 -path "*luci-app-bypass/Makefile" | xargs -i sed -i 's/smartdns-le/smartdns/g' {}
-
 
 # Modify default close dhcpv6
 sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
