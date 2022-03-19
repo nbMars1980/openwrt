@@ -184,7 +184,7 @@ jobs:
     - name: Delete workflow runs
       uses: marsgrace/delete-workflow-runs@main
       with:
-        retain_days: 2
+        retain_days: 1
         keep_minimum_runs: 5
 
     - name: Remove old Releases
