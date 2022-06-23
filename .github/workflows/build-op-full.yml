@@ -176,7 +176,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: marsgrace/delete-workflow-runs@main
+      uses: nbMars1980/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 5
