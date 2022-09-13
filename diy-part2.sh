@@ -21,7 +21,7 @@
 #mv -f .config.bak .config
 
 #remove passwall2
-sed -i '/passwall2/ s/^/#/g' .config
+# sed -i '/passwall2/ s/^/#/g' .config
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
