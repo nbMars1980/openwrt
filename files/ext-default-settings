@@ -16,6 +16,12 @@ sed -i '/option ula_prefix/d' /etc/config/network
 
 #add my service
 if [ -f /etc/luci-uploads/MarsNotify.service -a -f /etc/luci-uploads/MarsNotify.js ];then
+  if [ ! -d /usr/lib/node ];then
+    mkdir /usr/lib/node
+      if [ ! -d /usr/lib/node/request -a -d /mnt/extdisk/MarsNotify/request ];then 
+        ln -s /mnt/extdisk/MarsNotify/request /usr/lib/node/request
+      fi
+  fi
   # cp -rf /etc/luci-uploads/MarsNotify.service /etc/init.d/MarsNotify
   cd /etc/init.d && ln -s /etc/luci-uploads/MarsNotify.service MarsNotify
   chmod +x /etc/init.d/MarsNotify
