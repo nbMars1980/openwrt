@@ -41,7 +41,7 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 #sed -i 's|GOPROXY=https://goproxy.io|GOPROXY=https://proxy.golang.org|g' package/lean/UnblockNeteaseMusic-Go/Makefile
 
 #应急修正bypass 缺少依赖ipkg 错误
-sed -i "s/+luci-lib-ipkg//g"  package/feeds/kenzo/luci-app-bypass/Makefile
+# sed -i "s/+luci-lib-ipkg//g"  package/feeds/kenzo/luci-app-bypass/Makefile
 
 # modify ttnode and jd-dailybonus notify server url
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
