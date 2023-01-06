@@ -84,3 +84,6 @@ cp -f files/luci.locations feeds/packages/net/nginx/files-luci-support/
 # Add ext default config
 sed -i '/exit\(.*0\)/d' package/lean/default-settings/files/zzz-default-settings
 cat files/ext-default-settings >> package/lean/default-settings/files/zzz-default-settings
+
+#暂时删除 brook的 010-chore-deps-update-iploc-to-fix-build-with-mips.patch 补丁
+rm -rf feeds/small/brook/patches/010-chore-deps-update-iploc-to-fix-build-with-mips.patch
