@@ -38,9 +38,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@main
-
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -76,13 +73,15 @@ jobs:
         mkdir $GITHUB_WORKSPACE/tmp && chmod 777 $GITHUB_WORKSPACE/tmp
         sudo cp -rp /tmp/* $GITHUB_WORKSPACE/tmp
         sudo mount -B $GITHUB_WORKSPACE/tmp /tmp && df -hT 
+        
+    - name: Checkout
+      uses: actions/checkout@main
 
     - name: Clone source code      
       run: |
-        pwd && ls -al
-        cd $GITHUB_WORKSPACE      
-        pwd && ls -al
+        cd $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        pwd && ls -al
         
     - name: Load custom feeds
       run: |
