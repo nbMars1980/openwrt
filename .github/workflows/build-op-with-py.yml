@@ -77,14 +77,12 @@ jobs:
         sudo cp -rp /tmp/* $GITHUB_WORKSPACE/tmp
         sudo mount -B $GITHUB_WORKSPACE/tmp /tmp && df -hT 
 
-    - name: Clone source code
-      working-directory: /workdir
+    - name: Clone source code      
       run: |
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        cd $GITHUB_WORKSPACE
+        git init
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
+        
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
