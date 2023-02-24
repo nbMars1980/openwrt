@@ -79,8 +79,9 @@ jobs:
 
     - name: Clone source code      
       run: |
-        cd $GITHUB_WORKSPACE
-        git init
+        pwd && ls-al
+        cd $GITHUB_WORKSPACE      
+        pwd && ls-al
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         
     - name: Load custom feeds
