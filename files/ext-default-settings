@@ -53,4 +53,7 @@ if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ];then
   uci commit dhcp
 fi
 
+# umdns connt start temporary solutions 
+mv /etc/seccomp/umdns.json /etc/seccomp/umdns1.json
+
 exit 0
