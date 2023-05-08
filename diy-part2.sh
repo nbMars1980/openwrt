@@ -44,7 +44,7 @@ sed -i '/root\(.*\)shadow/d' package/lean/default-settings/files/zzz-default-set
 #sed -i "s/+luci-lib-ipkg//g"  package/feeds/kenzo/luci-app-bypass/Makefile
 
 #应急修正ipt2socks HASH值验证错误
-sed -i 's/73a2498dc95934c225d358707e7f7d060b5ce81aa45260ada09cbd15207d27d1/5279eb1cb7555cf9292423cc9f672dc43e6e214b3411a6df26a6a1cfa59d88b7/g' feeds/small/ipt2socks/Makefile
+#sed -i 's/73a2498dc95934c225d358707e7f7d060b5ce81aa45260ada09cbd15207d27d1/5279eb1cb7555cf9292423cc9f672dc43e6e214b3411a6df26a6a1cfa59d88b7/g' feeds/small/ipt2socks/Makefile
 
 # modify ttnode and jd-dailybonus notify server url
 sed -i "s|https://\(.*\)ftqq.com/|http://192.168.0.3:2443/|g" package/lean/luci-app-ttnode/root/usr/share/ttnode/ttnode.lua
