@@ -2,8 +2,8 @@
 # File name: diy-part3.sh
 # Description: Modify Config File,delete docker and use uhttpd
 
-Use_Uhttpd=false
-remove_Docker=true
+Use_Uhttpd=true
+remove_Docker=false
 
 if $Use_Uhttpd ; then
 # remove nginx and use uhttpd
