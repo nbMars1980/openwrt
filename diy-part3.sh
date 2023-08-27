@@ -34,13 +34,14 @@ fi
 
 if $remove_Docker ; then
 # remove Docker
-sed -i "/^CONFIG_PACKAGE_luci-app-dockerman=y/ s/^/# /g" .config
-sed -i "/^CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y/ s/^/# /g" .config
+sed -i "/docker/I s/^/# /g" .config
+# sed -i "/^CONFIG_PACKAGE_luci-app-dockerman=y/ s/^/# /g" .config
+# sed -i "/^CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y/ s/^/# /g" .config
 
-sed -i "/^CONFIG_PACKAGE_luci-lib-docker=y/ s/^/# /g" .config
+# sed -i "/^CONFIG_PACKAGE_luci-lib-docker=y/ s/^/# /g" .config
 
-sed -i "/^CONFIG_PACKAGE_docker-ce=y/ s/^/# /g" .config
+# sed -i "/^CONFIG_PACKAGE_docker-ce=y/ s/^/# /g" .config
 
-sed -i "/^CONFIG_DOCKER_\(.*=y\)/ s/^/# /g" .config
+# sed -i "/^CONFIG_DOCKER_\(.*=y\)/ s/^/# /g" .config
 
 fi
