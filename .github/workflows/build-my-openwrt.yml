@@ -110,7 +110,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         sed -i "/docker/I s/^/# /g" .config
-        sed -i "/aliyundrive-webdav/ s/^/# /g" .config
+#        sed -i "/aliyundrive-webdav/ s/^/# /g" .config
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
