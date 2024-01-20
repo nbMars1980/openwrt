@@ -25,6 +25,8 @@
 
 #aliyundrive-webdav 编译通不过，暂时先删除
 sed -i "s|\(aliyundrive.*\)=y|\1=n|g" .config
+#nspr v4.35 编译通不过，暂时先删除
+sed -i "s|\([PACKAGE_nspr|libnss].*\)=y|\1=n|g" .config
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
