@@ -23,12 +23,12 @@
 #remove passwall2
 #sed -i '/passwall2/ s/^/#/g' .config
 
-#aliyundrive-webdav 编译通不过，暂时先删除
-#sed -i "s|\(aliyundrive.*\)=y|\1=n|g" .config
+#aliyundrive-webdav 使用kenzo的
+cp .config .config.bak
+./scripts/feeds uninstall aliyundrive-webdav luci-app-aliyundrive-webdav
 ./scripts/feeds install -fp kenzo aliyundrive-webdav luci-app-aliyundrive-webdav
+mv -f .config.bak .config
 #sed -i "s/stripped/release/g" feeds/packages/multimedia/aliyundrive-webdav/Makefile
-#nspr v4.35 编译通不过，暂时先删除
-#sed -i "s/\(libnss\|PACKAGE_nspr.*\)=y/\1=n/g" .config
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
