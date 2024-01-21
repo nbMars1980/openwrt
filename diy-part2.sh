@@ -25,6 +25,7 @@
 
 #aliyundrive-webdav 编译通不过，暂时先删除
 #sed -i "s|\(aliyundrive.*\)=y|\1=n|g" .config
+./scripts/feeds install -fp kenzo aliyundrive-webdav luci-app-aliyundrive-webdav
 #nspr v4.35 编译通不过，暂时先删除
 #sed -i "s/\(libnss\|PACKAGE_nspr.*\)=y/\1=n/g" .config
 
