@@ -20,8 +20,8 @@
 #dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
 #mv -f .config.bak .config
 
-#rename PassWall 2 as PassWall_2
-sed -i "/alias(\"admin\"/{s/_(\".*\")/_(\"PassWall_2\")/g}" feeds/small/luci-app-passwall2/luasrc/controller/passwall2.lua
+#tomato界面主题中，passwall和passwall2菜单active存在冲突解决
+sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl)/g' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
 
 #临时解决 shadowsocks-rust 编译错误
 sed -i "s/8ee466b7919480f33db45c3995d4b0baa0c310470f88f7d65b7bb4a89e256624/809e46163440af1ca40bd863e4eebce5775fc1088bb51f43b6c4c2242d36f6e5/g" feeds/small/shadowsocks-rust/Makefile
