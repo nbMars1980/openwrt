@@ -438,5 +438,5 @@ CONFIG_PACKAGE_kmod-iptunnel6=y
 # CONFIG_PACKAGE_luci-theme-material=y
 # CONFIG_PACKAGE_luci-theme-netgear=y
 # CONFIG_PACKAGE_luci-theme-opentopd=y
-CONFIG_PACKAGE_iperf3=y
-CONFIG_PACKAGE_libiperf3=y
+# CONFIG_PACKAGE_iperf3=y
+# CONFIG_PACKAGE_libiperf3=y
