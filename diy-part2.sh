@@ -27,8 +27,8 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 sudo apt install clang
 
 # curl/8.5.0 - fix passwall `time_pretransfer` check
-rm -rf feeds/packages/net/curl
-git clone https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
+#rm -rf feeds/packages/net/curl
+#git clone https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
 
 #aliyundrive-webdav 使用kenzo的
 cp .config .config.bak
