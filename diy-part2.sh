@@ -28,7 +28,7 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 #解决small/gn编译失败问题
-#sudo apt install clang
+sudo apt install clang
 
 # curl/8.5.0 - fix passwall `time_pretransfer` check
 #rm -rf feeds/packages/net/curl
