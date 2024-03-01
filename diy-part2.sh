@@ -23,15 +23,16 @@
 #tomato界面主题中，passwall和passwall2菜单active存在冲突解决
 sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl)/g' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
 
+######上游已打补丁，xray相关的可以直接用golang1.21编译了
 #xray-core需要golang1.22才能编译
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 ###拉去一个临时补丁
-git remote add sbwml https://github.com/sbwml/openwrt_helloworld.git
-git fetch sbwml go1.21
-git checkout 0389f82 -- xray-plugin/patches/010-go1.21.patch
-mv xray-plugin/patches/010-go1.21.patch feeds/small/xray-plugin/patches/
-rm feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch
+#git remote add sbwml https://github.com/sbwml/openwrt_helloworld.git
+#git fetch sbwml go1.21
+#git checkout 0389f82 -- xray-plugin/patches/010-go1.21.patch
+#mv xray-plugin/patches/010-go1.21.patch feeds/small/xray-plugin/patches/
+#rm feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch
 ###
 
 #解决small/gn编译失败问题
