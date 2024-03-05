@@ -34,6 +34,7 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 #mv xray-plugin/patches/010-go1.21.patch feeds/small/xray-plugin/patches/
 #rm feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch
 ###
+mv feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch feeds/small/xray-plugin/patches/010-go1.21.patch
 
 #解决small/gn编译失败问题
 #sudo apt install clang
