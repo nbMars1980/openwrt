@@ -39,13 +39,13 @@ mkdir -p feeds/small/v2ray-plugin/patches && cat > feeds/small/v2ray-plugin/patc
 --- a/go.mod
 +++ b/go.mod
 @@ -1,6 +1,6 @@
-module github.com/shadowsocks/v2ray-plugin
+ module github.com/shadowsocks/v2ray-plugin
 
 -go 1.22
 +go 1.21.5
 
-require (
-	github.com/golang/protobuf v1.5.3
+ require (
+ 	github.com/golang/protobuf v1.5.3
 EOF
 
 #解决small/gn编译失败问题
