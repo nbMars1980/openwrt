@@ -34,7 +34,19 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 #mv xray-plugin/patches/010-go1.21.patch feeds/small/xray-plugin/patches/
 #rm feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch
 ###
-mv feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch feeds/small/xray-plugin/patches/010-go1.21.patch
+#####给v2ray-plugin打补丁，使用go1.21编译
+mkdir -p feeds/small/v2ray-plugin/patches && cat > feeds/small/v2ray-plugin/patches/0001-fix-go-1.21.patch <<EOF
+--- a/go.mod
++++ b/go.mod
+@@ -1,6 +1,6 @@
+module github.com/shadowsocks/v2ray-plugin
+
+-go 1.22
++go 1.21.5
+
+require (
+	github.com/golang/protobuf v1.5.3
+EOF
 
 #解决small/gn编译失败问题
 #sudo apt install clang
