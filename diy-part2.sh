@@ -25,8 +25,9 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 
 ######上游已打补丁，xray相关的可以直接用golang1.21编译了
 #xray-core需要golang1.22才能编译
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+
 ###拉去一个临时补丁
 #git remote add sbwml https://github.com/sbwml/openwrt_helloworld.git
 #git fetch sbwml go1.21
