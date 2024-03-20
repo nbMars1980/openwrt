@@ -22,6 +22,8 @@
 
 #tomato界面主题中，passwall和passwall2菜单active存在冲突解决
 sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl)/g' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
+#passwall和passwall2  qrcode.min.js冲突
+rm -f feeds/small/luci-app-passwall2/htdocs/luci-static/resources/qrcode.min.js
 
 ######上游已打补丁，xray相关的可以直接用golang1.21编译了
 #xray-core需要golang1.22才能编译
