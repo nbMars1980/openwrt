@@ -10,54 +10,38 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-#remove coolsnowwolf smartdns,Use kenzok8 smartdns
+#remove coolsnowwolf smartdns   ,Use kenzok8 smartdns  
 #cp .config .config.bak
 #./scripts/feeds uninstall smartdns 
 ./scripts/feeds install -fp kenzo smartdns 
 #./scripts/feeds install -fp small trojan simple-obfs dnsproxy
-# --下次可能需要恢复-- ./scripts/feeds uninstall luci-app-passwall
-# --下次可能需要恢复-- ./scripts/feeds install -afp xiaorouji   
-#dns2socks ipt2socks microsocks pdnsd-alt luci-app-passwall
 #mv -f .config.bak .config
 
 #tomato界面主题中，passwall和passwall2菜单active存在冲突解决
 sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl)/g' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
-#passwall和passwall2  qrcode.min.js冲突
-rm -f feeds/small/luci-app-passwall2/htdocs/luci-static/resources/qrcode.min.js
+#passwall和passwall2  qrcode.min.js冲突   24-8-31修改
+# ###rm -f feeds/small/luci-app-passwall2/htdocs/luci-static/resources/qrcode.min.js
 
 ######上游已打补丁，xray相关的可以直接用golang1.21编译了
-#xray-core需要golang1.22才能编译
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#xray-core需要golang1.22才能编译    24-8-31修改
+##rm -rf feeds/packages/lang/golang
+##git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
-###拉去一个临时补丁
-#git remote add sbwml https://github.com/sbwml/openwrt_helloworld.git
-#git fetch sbwml go1.21
-#git checkout 0389f82 -- xray-plugin/patches/010-go1.21.patch
-#mv xray-plugin/patches/010-go1.21.patch feeds/small/xray-plugin/patches/
-#rm feeds/small/xray-plugin/patches/0001-fix-go-1.21-build-error.patch
-###
+## dnsmasq用2.9版本   24-8-31修改
+#### 使用 Git 的稀疏检出功能
+git clone --no-checkout https://github.com/kenzok8/small-package.git
+cd small-package
+git sparse-checkout init
+git sparse-checkout set dnsmasq
+git checkout main
+#### Git 的稀疏检出完毕
+rm -rf ../package/network/services/dnsmasq
+cp -r dnsmasq ../package/network/services/   
+rm -rf small-package
+## dnsmasq用2.9版本代码结束
 
-#####给v2ray-plugin打补丁，使用go1.21编译
-#mkdir -p feeds/small/v2ray-plugin/patches && cat > feeds/small/v2ray-plugin/patches/0001-fix-go-1.21.patch <<EOF
-#--- a/go.mod
-#+++ b/go.mod
-#@@ -1,6 +1,6 @@
-# module github.com/shadowsocks/v2ray-plugin
-#
-#-go 1.22
-#+go 1.21.5
-#
-# require (
-# 	github.com/golang/protobuf v1.5.3
-#EOF
-
-#解决small/gn编译失败问题
-#sudo apt install clang
-
-# curl/8.5.0 - fix passwall `time_pretransfer` check
-#rm -rf feeds/packages/net/curl
-#git clone https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
+#禁用firewill 启用firewill4  24-8-31修改
+sed -i 's/+firewall/+uci-firewall/g' feeds/luci/applications/luci-app-firewall/Makefile
 
 #aliyundrive-webdav 使用kenzo的
 cp .config .config.bak
