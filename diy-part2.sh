@@ -37,6 +37,7 @@ git checkout main
 #### Git 的稀疏检出完毕
 rm -rf ../package/network/services/dnsmasq
 cp -r dnsmasq ../package/network/services/   
+cd ..
 rm -rf small-package
 ## dnsmasq用2.9版本代码结束
 
