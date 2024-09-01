@@ -42,7 +42,7 @@ rm -rf small-package
 ## dnsmasq用2.9版本代码结束
 
 #禁用firewill 启用firewill4  24-8-31修改
-sed -i 's/+firewall/+uci-firewall/g' feeds/luci/applications/luci-app-firewall/Makefile
+#sed -i 's/+firewall/+uci-firewall/g' feeds/luci/applications/luci-app-firewall/Makefile
 
 #aliyundrive-webdav 使用kenzo的
 cp .config .config.bak
