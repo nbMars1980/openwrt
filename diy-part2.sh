@@ -10,12 +10,12 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-#部分强制使用使用kenzo的 
-cp .config .config.bak
-./scripts/feeds uninstall smartdns luci-app-smartdns aliyundrive-webdav luci-app-aliyundrive-webdav xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2 
-./scripts/feeds install -fp kenzo smartdns luci-app-smartdns aliyundrive-webdav luci-app-aliyundrive-webdav
-./scripts/feeds install -fp small xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2
-mv -f .config.bak .config
+#部分插件强制使用使用kenzo的，已移至diy-packages.sh实现了
+#cp .config .config.bak
+#./scripts/feeds uninstall smartdns luci-app-smartdns aliyundrive-webdav luci-app-aliyundrive-webdav xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2 
+#./scripts/feeds install -fp kenzo smartdns luci-app-smartdns aliyundrive-webdav luci-app-aliyundrive-webdav
+#./scripts/feeds install -fp small xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2
+#mv -f .config.bak .config
 
 
 #tomato界面主题中，passwall和passwall2菜单active存在冲突解决
