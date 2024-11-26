@@ -10,12 +10,13 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-#remove coolsnowwolf smartdns   ,Use kenzok8 smartdns  
-#cp .config .config.bak
-#./scripts/feeds uninstall smartdns 
-./scripts/feeds install -fp kenzo smartdns 
+#部分强制使用使用kenzo的 
+cp .config .config.bak
+./scripts/feeds uninstall smartdns luci-app-smartdns aliyundrive-webdav luci-app-aliyundrive-webdav xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2 
+./scripts/feeds install -fp kenzo smartdns luci-app-smartdns aliyundrive-webdav luci-app-aliyundrive-webdav
 ./scripts/feeds install -fp small xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2
-#mv -f .config.bak .config
+mv -f .config.bak .config
+
 
 #tomato界面主题中，passwall和passwall2菜单active存在冲突解决
 sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl)/g' feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
@@ -43,13 +44,6 @@ rm -rf small-package
 
 #禁用firewill 启用firewill4  24-8-31修改
 #sed -i 's/+firewall/+uci-firewall/g' feeds/luci/applications/luci-app-firewall/Makefile
-
-#aliyundrive-webdav 使用kenzo的
-cp .config .config.bak
-./scripts/feeds uninstall aliyundrive-webdav luci-app-aliyundrive-webdav
-./scripts/feeds install -fp kenzo aliyundrive-webdav luci-app-aliyundrive-webdav
-mv -f .config.bak .config
-#sed -i "s/stripped/release/g" feeds/packages/multimedia/aliyundrive-webdav/Makefile
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
