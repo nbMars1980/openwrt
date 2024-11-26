@@ -14,7 +14,7 @@
 #cp .config .config.bak
 #./scripts/feeds uninstall smartdns 
 ./scripts/feeds install -fp kenzo smartdns 
-#./scripts/feeds install -fp small trojan simple-obfs dnsproxy
+./scripts/feeds install -fp small xray-core sing-box v2ray-core luci-app-passwall luci-app-passwall2
 #mv -f .config.bak .config
 
 #tomato界面主题中，passwall和passwall2菜单active存在冲突解决
