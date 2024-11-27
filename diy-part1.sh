@@ -30,7 +30,22 @@ rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,sm
 rm -rf feeds/packages/multimedia/aliyundrive-webdav 
 rm -rf feeds/packages/utils/v2dat
 
+#使用kenzok8的golang新版本
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+
+## dnsmasq用2.9版本   24-8-31修改
+#### 使用 Git 的稀疏检出功能
+git clone --no-checkout https://github.com/kenzok8/small-package.git
+cd small-package
+git sparse-checkout init
+git sparse-checkout set dnsmasq
+git checkout main
+#### Git 的稀疏检出完毕
+rm -rf ../package/network/services/dnsmasq
+cp -r dnsmasq ../package/network/services/   
+cd ..
+rm -rf small-package
+## dnsmasq用2.9版本代码结束
 
 ./scripts/feeds install -a 

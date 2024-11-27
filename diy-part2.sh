@@ -28,19 +28,6 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 ##rm -rf feeds/packages/lang/golang
 ##git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
-## dnsmasq用2.9版本   24-8-31修改
-#### 使用 Git 的稀疏检出功能
-git clone --no-checkout https://github.com/kenzok8/small-package.git
-cd small-package
-git sparse-checkout init
-git sparse-checkout set dnsmasq
-git checkout main
-#### Git 的稀疏检出完毕
-rm -rf ../package/network/services/dnsmasq
-cp -r dnsmasq ../package/network/services/   
-cd ..
-rm -rf small-package
-## dnsmasq用2.9版本代码结束
 
 #禁用firewill 启用firewill4  24-8-31修改
 #sed -i 's/+firewall/+uci-firewall/g' feeds/luci/applications/luci-app-firewall/Makefile
