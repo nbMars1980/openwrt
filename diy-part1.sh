@@ -15,23 +15,22 @@
 #sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
 
 # Add a feed source
-#git clone https://github.com/kenzok8/openwrt-packages.git feeds/kenzo
-#sed -i '$a src-git kenzo https://github.com/kenzok8/small-package.git' feeds.conf.default
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-# --下次可能需要恢复-- sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-
-#Add bypass
-#git clone https://github.com/garypang13/luci-app-bypass package/lean/luci-app-bypass
-
-#Add ttnode
-#git clone https://github.com/jerrykuku/luci-app-ttnode package/lean/luci-app-ttnode
-
-#Add dockerman
-#git clone https://github.com/lisaac/luci-app-dockerman package/lean/luci-app-dockerman
+#sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+#sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 #Add tencentddns
 git clone https://github.com/pbx168/luci-app-tencentddns package/lean/luci-app-tencentddns
 
-#Add  jd-dailybonus
-#git clone https://github.com/jerrykuku/luci-app-jd-dailybonus package/lean/luci-app-jd-dailybonus
+./scripts/feeds update -a 
+
+rm -rf feeds/luci/applications/luci-app-mosdns feeds/luci/applications/luci-app-smartdns feeds/luci/applications/luci-app-aliyundrive-webdav feeds/luci/applications/luci-app-passwall feeds/luci/applications/luci-app-passwall2
+rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/multimedia/aliyundrive-webdav 
+rm -rf feeds/packages/utils/v2dat
+
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+
+./scripts/feeds install -a 
