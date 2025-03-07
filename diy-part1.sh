@@ -31,8 +31,8 @@ rm -rf feeds/packages/multimedia/aliyundrive-webdav
 rm -rf feeds/packages/utils/v2dat
 
 #使用kenzok8的golang新版本
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 ## dnsmasq用2.9版本   24-8-31修改
 #### 使用 Git 的稀疏检出功能
