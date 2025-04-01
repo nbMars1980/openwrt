@@ -35,6 +35,7 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
 sed -i 's|192.168.$((addr_offset++)).1|192.168.$((addr_offset++)).250|g' package/base-files/files/bin/config_generate
+sed -i 's|LEDE|openwrt|g' package/base-files/files/bin/config_generate
 
 # Set Display Version number
 displayver=R$(date +'%y.%-m.%-d-%H%M%S')

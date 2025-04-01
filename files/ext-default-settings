@@ -1,5 +1,6 @@
 # Add default root password
-sed -i 's/root::0:0:99999:7:::/root:$1$82ul89PC$i6T4CwyLabeZiJUcMMzMU1:18678:0:99999:7:::/g' /etc/shadow
+sed -i 's/root::0:0:99999:7:::/root:$1$v6BTTEHb$t3xyt3RJ6WkjtgE5iBxYl1:19486:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$v6BTTEHb$t3xyt3RJ6WkjtgE5iBxYl1:19486:0:99999:7:::/g' /etc/shadow
 
 # Add default ssh public key
 if [ ! -s /etc/dropbear/authorized_keys ]||[ `grep -c "2OFZB2qET+NWgyDW5KDEMH7Ztpdgc3EOlMBvVj2GipdpMfQAMUNMc=" /etc/dropbear/authorized_keys` -eq 0 ];then
@@ -41,17 +42,17 @@ fi
 sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /etc/shinit
 
 # Modify dhcp default config
-if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ];then
-  uci add_list dhcp.lan.ignore=1
-  uci delete dhcp.lan.start
-  uci delete dhcp.lan.limit
-  uci delete dhcp.lan.leasetime   
-  uci delete dhcp.lan.ra_management
-  uci delete dhcp.lan.ra
-  # uci delete dhcp.lan.dhcpv4
-  uci delete dhcp.lan.dhcpv6
-  uci commit dhcp
-fi
+# if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ];then
+#   uci add_list dhcp.lan.ignore=1
+#   uci delete dhcp.lan.start
+#   uci delete dhcp.lan.limit
+#   uci delete dhcp.lan.leasetime   
+#   uci delete dhcp.lan.ra_management
+#   uci delete dhcp.lan.ra
+#   # uci delete dhcp.lan.dhcpv4
+#   uci delete dhcp.lan.dhcpv6
+#   uci commit dhcp
+# fi
 
 # umdns connt start temporary solutions 
 mv /etc/seccomp/umdns.json /etc/seccomp/umdns1.json
