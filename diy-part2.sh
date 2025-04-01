@@ -34,6 +34,8 @@ sed -i 's/if (href.indexOf(nodeUrl) != -1)/if (href.substr(href.length-nodeUrl.l
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.0.250/g' package/base-files/files/bin/config_generate
+sed -i 's|192.168.$((addr_offset++)).1|192.168.$((addr_offset++)).250|g' package/base-files/files/bin/config_generate
+
 # Set Display Version number
 displayver=R$(date +'%y.%-m.%-d-%H%M%S')
 sed -i "/DISTRIB_REVISION='R/{s|\(.\+\)'\(.\+\)'\(.\+\)|\1'$displayver Compiled by Mars'\3|;;}" package/lean/default-settings/files/zzz-default-settings
@@ -70,7 +72,7 @@ sed -i "/腾讯云设置/,+1d" package/lean/luci-app-tencentddns/luasrc/controll
 #sed -i "s/if (href.indexOf(nodeUrl) != -1) {/if (href.substr(href.length-nodeUrl.length,nodeUrl.length) == nodeUrl) {/g" feeds/kenzo/luci-theme-tomato/htdocs/luci-static/tomato/js/script.js
 
 # Modify default close dhcpv6
-sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
+#sed -i '/dhcp.lan.\(.*$MODE\)/ s/^/# /g' package/network/services/odhcpd/files/odhcpd.defaults
 
 # Change nginx and uhttpd default config
 sed -i "s/\(listen_http.*\):80/\1:82/g" package/network/services/uhttpd/files/uhttpd.config
