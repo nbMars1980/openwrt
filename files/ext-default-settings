@@ -57,4 +57,16 @@ sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /et
 # umdns connt start temporary solutions 
 mv /etc/seccomp/umdns.json /etc/seccomp/umdns1.json
 
+# openclash configs
+mkdir -p /etc/openclash_bak
+cp -r /etc/openclash /etc/openclash_bak/
+
+rm -f /etc/openclash/custom/*
+rm -f /etc/openclash/rule_provider/*
+rm -f /etc/openclash/core/clash_meta
+
+# softethervpn configs
+mkdir -p /usr/libexec/softethervpn/config_bak
+mv /usr/libexec/softethervpn/*.config /usr/libexec/softethervpn/config_bak/
+
 exit 0
