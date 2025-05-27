@@ -40,7 +40,8 @@ fi
 
 #add -h to ll command
 sed -i "s/alias ll='ls -alF --color=auto'/alias ll='ls -alFh --color=auto'/" /etc/shinit
-
+sed -i '/\/usr\/bin\/vim/a [ -x \/usr\/bin\/nano ] && alias vi=nano  && alias vim=nano' /etc/shinit
+sed -i '$a export EDITOR=nano' /etc/shinit
 # Modify dhcp default config
 # if [ -z `uci get dhcp.lan.ignore 2>/dev/null` ];then
 #   uci add_list dhcp.lan.ignore=1
