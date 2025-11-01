@@ -86,3 +86,28 @@ cp -f files/luci.locations feeds/packages/net/nginx/files-luci-support/
 # Add ext default config
 sed -i '/exit\(.*0\)/d' package/lean/default-settings/files/zzz-default-settings
 cat files/ext-default-settings >> package/lean/default-settings/files/zzz-default-settings
+
+
+#  尝试修复 ERROR: package/feeds/packages/uwsgi failed to build.问题
+if [ -d "feeds/packages/net/uwsgi" ]; then
+  echo "Upgrading uwsgi from 2.0.20 (coolsnowwolf) to 2.0.30 (openwrt/packages)..."
+  # Backup original
+  mv feeds/packages/net/uwsgi feeds/packages/net/uwsgi.backup
+  # Clone official openwrt/packages uwsgi using sparse checkout
+  mkdir -p /tmp/openwrt-packages-uwsgi
+  cd /tmp/openwrt-packages-uwsgi
+  git init
+  git remote add origin https://github.com/openwrt/packages.git
+  git config core.sparseCheckout true
+  echo "net/uwsgi/*" > .git/info/sparse-checkout
+  git pull --depth=1 origin master
+    # Copy to feeds
+  cp -r net/uwsgi "$GITHUB_WORKSPACE/openwrt/feeds/packages/net/"
+
+  # Cleanup
+  cd "$GITHUB_WORKSPACE/openwrt"
+  rm -rf /tmp/openwrt-packages-uwsgi
+
+  echo "✓ uwsgi upgraded to 2.0.30 (Python 3.11 compatible)"
+fi
+# 尝试修复代码结束
